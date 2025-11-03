@@ -22,7 +22,7 @@ import com.nefos.spring.jpa.h2.model.Task;
 import com.nefos.spring.jpa.h2.repository.TaskRepository;
 import com.nefos.spring.jpa.h2.service.TaskService;
 
-@CrossOrigin(origins = "http://localhost:8081")
+
 @RestController
 @RequestMapping("/api")
 public class TaskController {

@@ -1,8 +1,10 @@
 package com.nefos.spring.jpa.h2.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.nefos.spring.jpa.h2.model.ERole;
 import com.nefos.spring.jpa.h2.model.Role;
@@ -19,6 +21,9 @@ import java.util.Set;
 @Configuration
 public class DataInitializer {
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @Bean
     CommandLineRunner initDatabase(TaskRepository taskRepo, RoleRepository roleRepo, UserRepository userRepo) {
         return args -> {
@@ -33,7 +38,7 @@ public class DataInitializer {
             taskRepo.save(new Task("Write email", "write email to finance", false));
             taskRepo.save(new Task("Meeting", "meeting with hr", false));
 
-            User u = new User("frank", "frank@gmail.com", "frank");
+            User u = new User("franke", "frank@gmail.com", encoder.encode("franke"));
 
             Set<Role> roles = new HashSet<>();
 

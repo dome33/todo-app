@@ -34,7 +34,7 @@ import com.nefos.spring.jpa.h2.repository.UserRepository;
 import com.nefos.spring.jpa.h2.security.jwt.JwtUtils;
 import com.nefos.spring.jpa.h2.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
 //for Angular Client (withCredentials)
 //@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
 @RestController
