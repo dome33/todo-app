@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task.model';
 
-const baseUrl = 'http://localhost:8080/api/tasks';
+import { environment } from '../environments/environment';
+const baseUrl = environment.apiUrl + '/api/tasks';
+
 
 @Injectable({
   providedIn: 'root',

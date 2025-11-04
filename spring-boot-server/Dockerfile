@@ -1,5 +1,5 @@
-# Use a minimal Java image for production
-FROM openjdk:17-jre-alpine
+# Use a minimal Java image for productio
+FROM eclipse-temurin:17-jre-alpine
 
 # Set the working directory
 WORKDIR /app

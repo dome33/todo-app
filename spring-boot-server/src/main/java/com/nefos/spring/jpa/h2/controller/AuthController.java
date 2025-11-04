@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import jakarta.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -54,6 +56,8 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
+
+  private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -132,6 +136,10 @@ public class AuthController {
   @PostMapping("/signout")
   public ResponseEntity<?> logoutUser() {
     ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
+
+    String cookieDetails = cookie.toString();
+    logger.info("Full ResponseCookie String: " + cookieDetails);
+
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
         .body(new MessageResponse("You've been signed out!"));
   }
